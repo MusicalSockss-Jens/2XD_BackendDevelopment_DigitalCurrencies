@@ -1,8 +1,3 @@
-<?php
-// Tijdelijke nep-data voor vandaag zodat we XAMPP niet nodig hebben!
-$user = [
-    'username' =>
-'TestGebruiker', 'balance' => '500.00' ]; ?>
 <!doctype html>
 <html lang="en">
   <head>
