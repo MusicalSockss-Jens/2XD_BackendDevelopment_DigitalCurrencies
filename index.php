@@ -1,3 +1,9 @@
+<?php
+require_once 'db.php';
+
+$stmt = $pdo->query("SELECT * FROM users LIMIT 1");
+$user = $stmt->fetch();
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -46,7 +52,7 @@
     <div class="card">
       <h1>XD Wallet</h1>
       <p style="color: #94a3b8; margin: 0">
-        Welkom, <?= htmlspecialchars($user['username']) ?>
+        Welkom, <?= htmlspecialchars($user['email']) ?>
       </p>
       <p style="color: #94a3b8; margin-top: 0.5rem; margin-bottom: 0">
         Current Balance
