@@ -18,4 +18,18 @@
         }
         $this->password = password_hash($password, PASSWORD_BCRYPT);
     }
+    public function register($pdo) {
+        $stmt = $pdo->prepare("SELECT id FROM users WHERE email = :email");
+        $stmt->execute(['email' => $this->email]);
+
+        if ($stmt->fetch()) {
+            throw new Exception("Dit e-mailadres is al geregistreerd!");
+        }
+
+        $stmt = $pdo->prepare("INSERT INTO users (email, password, balance) VALUES (:email, :password, 10.00)");
+        return $stmt->execute([
+            'email' => $this->email,
+            'password' => $this->password
+        ]);
+    }
 }
