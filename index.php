@@ -60,27 +60,49 @@ if (!$user) {
         color: #38bdf8;
         font-size: 1rem;
       }
+      .button-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 1.5rem;
+      }
+      .logout-btn {
+        background-color: #ef4444;
+        color: #f8fafc;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        text-decoration: none;
+        display: inline-block;
+      }
+      .logout-btn:hover {
+        background-color: #dc2626;
+      }
     </style>
   </head>
   <body>
-    <div class="card">
-      <h1>XD Wallet</h1>
-      <p style="color: #94a3b8; margin: 0">
-        Welkom, <?= htmlspecialchars($user['email']) ?>
-      </p>
-      <p style="color: #94a3b8; margin-top: 0.5rem; margin-bottom: 0">
-        Current Balance
-      </p>
-      <div class="balance">
-        <?= htmlspecialchars($user['balance']) ?>
-        <span class="token">XD</span>
+    <div>
+      <div class="card">
+        <h1>XD Wallet</h1>
+        <p style="color: #94a3b8; margin: 0">
+          Welkom, <?= htmlspecialchars($user['email']) ?>
+        </p>
+        <p style="color: #94a3b8; margin-top: 0.5rem; margin-bottom: 0">
+          Current Balance
+        </p>
+        <div class="balance">
+          <?= htmlspecialchars($user['balance']) ?>
+          <span class="token">XD</span>
+        </div>
+        <p style="color: #4ade80; font-size: 0.875rem; margin: 0">
+          ✓ Account Active
+        </p>
       </div>
-      <p style="color: #4ade80; font-size: 0.875rem; margin: 0">
-        ✓ Account Active
-      </p>
-    </div>
-     <div>
-      <a href="logout.php">Uitloggen</a>
+      <div class="button-container">
+        <a href="logout.php" class="logout-btn">Uitloggen</a>
+      </div>
     </div>
   </body>
 </html>
