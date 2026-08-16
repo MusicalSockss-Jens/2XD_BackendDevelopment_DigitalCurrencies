@@ -65,5 +65,8 @@ $user = $stmt->fetch();
         ✓ Account Active
       </p>
     </div>
+    <div>
+      <a href="register.php">Naar registreren</a>
+    </div>
   </body>
 </html>
