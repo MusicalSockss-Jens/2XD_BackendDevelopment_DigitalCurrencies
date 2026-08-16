@@ -3,6 +3,7 @@
   class User {
     private $email;
     private $password;
+    private $plainPassword;
 
     public function setEmail($email) {
         $email = trim($email);
@@ -16,6 +17,7 @@
         if (strlen($password) < 5) {
             throw new Exception("Het wachtwoord moet minstens 5 tekens lang zijn.");
         }
+        $this->plainPassword = $password;
         $this->password = password_hash($password, PASSWORD_BCRYPT);
     }
     public function register($pdo) {
@@ -31,5 +33,16 @@
             'email' => $this->email,
             'password' => $this->password
         ]);
+    }
+   public function login($pdo) {
+        $stmt = $pdo->prepare("SELECT * FROM users WHERE email = :email");
+        $stmt->execute(['email' => $this->email]);
+        $user = $stmt->fetch();
+
+        if (!$user || !password_verify($this->plainPassword, $user['password'])) {
+            throw new Exception("Ongeldig e-mailadres of wachtwoord.");
+        }
+
+        return $user; 
     }
 }
