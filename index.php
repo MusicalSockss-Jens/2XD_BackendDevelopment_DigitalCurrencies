@@ -1,8 +1,22 @@
 <?php
+session_start();
 require_once 'db.php';
 
-$stmt = $pdo->query("SELECT * FROM users LIMIT 1");
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit;
+}
+
+// Fetch user data from database
+$stmt = $pdo->prepare("SELECT * FROM users WHERE id = :id");
+$stmt->execute(['id' => $_SESSION['user_id']]);
 $user = $stmt->fetch();
+
+if (!$user) {
+    session_destroy();
+    header('Location: login.php');
+    exit;
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -65,8 +79,8 @@ $user = $stmt->fetch();
         ✓ Account Active
       </p>
     </div>
-    <div>
-      <a href="register.php">Naar registreren</a>
+     <div>
+      <a href="logout.php">Uitloggen</a>
     </div>
   </body>
 </html>
