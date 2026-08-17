@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once 'db.php';
+require_once 'helpers.php';
 
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
@@ -87,7 +88,7 @@ if (!$user) {
       <div class="card">
         <h1>XD Wallet</h1>
         <p style="color: #94a3b8; margin: 0">
-          Welkom, <?= htmlspecialchars($user['email']) ?>
+          Welkom, <?= htmlspecialchars(emailToName($user['email'])) ?>
         </p>
         <p style="color: #94a3b8; margin-top: 0.5rem; margin-bottom: 0">
           Current Balance
@@ -99,6 +100,9 @@ if (!$user) {
         <p style="color: #4ade80; font-size: 0.875rem; margin: 0">
           ✓ Account Active
         </p>
+        <div class="button--container">
+          <a href="transfer.php">Overschrijven</a>
+        </div>
       </div>
       <div class="button-container">
         <a href="logout.php" class="logout-btn">Uitloggen</a>
