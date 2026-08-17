@@ -38,6 +38,91 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
+    <style>
+      body {
+        background-color: #0f172a;
+        color: #f8fafc;
+        font-family: system-ui, -apple-system, sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+      }
+      .card {
+        background-color: #1e293b;
+        border: 1px solid #334155;
+        padding: 10px;
+        border-radius: 12px;
+        width: 320px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      }
+      h1 {
+        font-size: 1.25rem;
+        color: #38bdf8;
+        margin-top: 0;
+      }
+      label {
+        display: block;
+        color: #94a3b8;
+        margin-bottom: 10px;
+      }
+      input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 1rem;
+        background-color: #0f172a;
+        border: 1px solid #334155;
+        border-radius: 6px;
+        color: #f8fafc;
+        box-sizing: border-box;
+      }
+      input:focus {
+        outline: none;
+        border-color: #38bdf8;
+      }
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: #38bdf8;
+        color: #0f172a;
+        border: none;
+        border-radius: 6px;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      button:hover {
+        background-color: #0ea5e9;
+      }
+      .message {
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 6px;
+      }
+      .success {
+        background-color: #164e63;
+        color: #86efac;
+      }
+      .error {
+        background-color: #7f1d1d;
+        color: #fca5a5;
+      }
+      .link-text {
+        color: #94a3b8;
+        margin-top: 10px;
+        text-align: center;
+      }
+      a {
+        color: #38bdf8;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
     <title>Geld versturen - XD Wallet</title>
 </head>
 <body>
