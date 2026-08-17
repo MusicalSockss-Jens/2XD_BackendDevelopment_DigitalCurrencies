@@ -100,7 +100,7 @@ if (!$user) {
         <p style="color: #4ade80; font-size: 0.875rem; margin: 0">
           ✓ Account Active
         </p>
-        <div class="button--container">
+        <div class="button-container">
           <a href="transfer.php">Overschrijven</a>
         </div>
       </div>
