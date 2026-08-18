@@ -94,7 +94,7 @@ if (!$user) {
           Current Balance
         </p>
         <div class="balance">
-          <?= htmlspecialchars($user['balance']) ?>
+          <span id="user-balance"><?= htmlspecialchars($user['balance']) ?></span>
           <span class="token">XD</span>
         </div>
         <p style="color: #4ade80; font-size: 0.875rem; margin: 0">
@@ -108,5 +108,17 @@ if (!$user) {
         <a href="logout.php" class="logout-btn">Uitloggen</a>
       </div>
     </div>
+
+    <script>
+      setInterval(() => {
+        fetch('get_balance.php')
+          .then(res => res.json())
+          .then(data => {
+            if (data.balance !== undefined) {
+              document.getElementById('user-balance').textContent = data.balance;
+            }
+          });
+      }, 10000);
+    </script>
   </body>
 </html>
