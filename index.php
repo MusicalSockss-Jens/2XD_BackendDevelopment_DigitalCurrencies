@@ -38,14 +38,39 @@ if (!$user) {
         align-items: center;
         min-height: 100vh;
         margin: 0;
+        justify-content: center;
       }
       .card {
         background-color: #1e293b;
         border: 1px solid #334155;
+        display: flex;
+        flex-direction: column;
         padding: 2rem;
         border-radius: 12px;
         width: 320px;
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        justify-content: center;
+      }
+      .btn{
+        background-color: #1e293b;
+        border: 1px solid #334155;
+        color: #f8fafc;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        text-decoration: none;
+        display: inline-block;
+        margin-top: 1rem;
+      }
+
+      .btn a {
+        color: #f8fafc;
+        text-decoration: none;
+        padding: 0.75rem 1.5rem;
+        display:flex;
+        justify-content: center;
       }
       h1 {
         font-size: 1.25rem;
@@ -100,8 +125,12 @@ if (!$user) {
         <p style="color: #4ade80; font-size: 0.875rem; margin: 0">
           ✓ Account Active
         </p>
-        <div class="button-container">
+        <div class="button-container, btn">
           <a href="transfer.php">Overschrijven</a>
+        </div>
+         <div class="button-container, btn">
+          <a href="history.php">Geschiedenis
+          </a>
         </div>
       </div>
       <div class="button-container">
