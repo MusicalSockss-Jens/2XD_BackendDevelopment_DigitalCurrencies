@@ -135,7 +135,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <form method="POST">
         <div>
             <label>E-mailadres ontvanger:</label><br>
-            <input type="email" name="receiver_email" required>
+            <input type="email" id="receiver_email" name="receiver_email" list="users-list" required autocomplete="off">
+            <datalist id="users-list"></datalist>
         </div>
         <br>
         <div>
@@ -151,5 +152,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button type="submit">Versturen</button>
     </form>
     <p><a href="index.php">Terug naar wallet</a></p>
+
+    <script>
+        const receiverInput = document.getElementById('receiver_email');
+        const datalist = document.getElementById('users-list');
+
+        receiverInput.addEventListener('input', function() {
+            const query = this.value.trim();
+            if (query.length < 2) return;
+
+            fetch('search_users.php?q=' + encodeURIComponent(query))
+                .then(response => response.json())
+                .then(users => {
+                    datalist.innerHTML = '';
+                    users.forEach(user => {
+                        const option = document.createElement('option');
+                        option.value = user.email;
+                        option.label = user.name;
+                        datalist.appendChild(option);
+                    });
+                });
+        });
+    </script>
 </body>
 </html>
